@@ -1,0 +1,46 @@
+steps:
+  - name: node:latest
+    entrypoint: npm
+    args: ['install']
+    id: 'npm-install'
+    waitFor: ['-']
+
+  - name: node:latest
+    entrypoint: npm
+    args: ['test']
+    id: 'npm-test'
+    waitFor: ['npm-install']
+
+  - name: node:latest
+    entrypoint: npm
+    args: ['run', 'build']
+    id: 'npm-build'
+    waitFor: ['npm-install']
+
+  - name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - docker build
+        -t gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA
+        -t gcr.io/$PROJECT_ID/$REPO_NAME:github
+        .
+    id: 'docker-build'
+    waitFor: ['npm-build']
+
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - gcr.io/$PROJECT_ID/$REPO_NAME
+    id: 'docker-push'
+    waitFor: ['docker-build']
+
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - set
+      - image
+      - deployment/glados-development
+      - glados=gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA
+    env:
+      - CLOUDSDK_COMPUTE_ZONE=southamerica-east1-a
+      - CLOUDSDK_CONTAINER_CLUSTER=main-cluster
