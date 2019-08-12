@@ -1,0 +1,19 @@
+{
+  "name": "tradeshift-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandosangenetto/tradeshift-challenge.git"
+  },
+  "author": "Nando Sangenetto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nandosangenetto/tradeshift-challenge/issues"
+  },
+  "homepage": "https://github.com/nandosangenetto/tradeshift-challenge#readme"
+}
