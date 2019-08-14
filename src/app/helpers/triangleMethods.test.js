@@ -53,7 +53,7 @@ describe('Triangle methods test', () => {
     const sides = {
       a: 50,
       b: 50,
-      c: 100,
+      c: 99,
     };
     const type = triangleType(sides);
     expect(type).toBe('isosceles');

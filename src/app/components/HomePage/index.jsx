@@ -16,8 +16,8 @@ const HomePage = () => {
 
   const isTriangleInitialized = Object.values(state).every(item => item !== '');
 
-  const onFormChange = ({ a, b, c }) => {
-    setState({ a: parseInt(a, 10), b: parseInt(b, 10), c: parseInt(c, 10) });
+  const onFormChange = result => {
+    setState(result);
   };
 
   return (

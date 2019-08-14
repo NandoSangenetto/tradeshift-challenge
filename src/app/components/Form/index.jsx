@@ -33,11 +33,13 @@ const Form = ({ onResult }) => {
   };
 
   const validateFields = inputs =>
-    Object.values(inputs).every(input => input !== '');
+    Object.values(inputs).every(
+      input => typeof input === 'number' && !Number.isNaN(input)
+    );
 
   const validateForm = result => {
-    const isValidTriangle = validateTriangle(result);
     const isAllFiled = validateFields(result);
+    const isValidTriangle = validateTriangle(result);
 
     const errors = [
       !isAllFiled && 'You must fill all the fields.',
@@ -60,7 +62,12 @@ const Form = ({ onResult }) => {
   const onSubmit = event => {
     event.preventDefault();
 
-    const result = state.fields;
+    const { a, b, c } = state.fields;
+    const result = {
+      a: parseInt(a, 10),
+      b: parseInt(b, 10),
+      c: parseInt(c, 10),
+    };
     const isFormValid = validateForm(result);
     if (!isFormValid) return false;
 

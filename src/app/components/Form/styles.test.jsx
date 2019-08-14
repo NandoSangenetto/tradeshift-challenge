@@ -18,7 +18,7 @@ describe('Styles of', () => {
     const { container } = render(<SecondaryButton />);
     expect(container.firstChild).toHaveStyle(`
       cursor: pointer;
-      background-color: background-color: rgba(255, 255, 255, 0.5);;
+      background-color: background-color: rgb(255, 255, 255);
       color: rgb(15, 21, 25);
     `);
   });

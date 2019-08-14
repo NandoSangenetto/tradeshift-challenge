@@ -1,9 +1,8 @@
 export const validateTriangle = ({ a, b, c }) => {
-  // if (a + b <= c || a + c <= b || b + c <= a) {
-  if (a > b && a > c && b + c > a) {
-    return false;
+  if (a + b > c && b + c > a && c + a > b) {
+    return true;
   }
-  return true;
+  return false;
 };
 
 export const calculatePercentagePoints = ({ a, b, c }) => {
@@ -17,6 +16,6 @@ export const calculatePercentagePoints = ({ a, b, c }) => {
 
 export const triangleType = ({ a, b, c }) => {
   if (a === b && b === c) return 'equilateral';
-  if (a === b || a === c || b === c) return 'scalene';
+  if (a === b || a === c || b === c) return 'isosceles';
   return 'scalene';
 };

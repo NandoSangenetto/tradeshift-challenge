@@ -3,7 +3,7 @@ import 'jest-styled-components';
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Wrapper, Title, SideContainer } from './styles';
+import { Wrapper, Title, SideContainer, Result } from './styles';
 
 describe('Styles of', () => {
   it('the Wrapper has the right style', () => {
@@ -40,5 +40,18 @@ describe('Styles of', () => {
     expect(container.firstChild).toHaveStyleRule('max-width', '318px', {
       media: '(min-width:1024px)',
     });
+  });
+
+  it('the Result has the right style', () => {
+    const { container } = render(<Result />);
+    expect(container.firstChild).toHaveStyle(`
+      text-align: center;
+      text-transform: capitalize;
+    `);
+  });
+
+  it('the Result has to be h2', () => {
+    const { container } = render(<Result />);
+    expect(container.firstChild.tagName).toBe('H2');
   });
 });

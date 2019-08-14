@@ -23,6 +23,7 @@ const Button = css`
   border-radius: 20px;
   transition-property: color, background-color, border-color;
   transition-timing-function: ease;
+  border: 0;
   &:focus,
   &:active {
     outline: none;
@@ -45,12 +46,9 @@ export const PrimaryButton = styled.button`
 
 export const SecondaryButton = styled.button`
   ${Button}
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255);
   color: rgb(15, 21, 25);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(202, 215, 220);
-  border-image: initial;
+  border: 1px solid rgb(202, 215, 220);
   margin: 0 5px 0 auto;
   &:hover {
     background-color: rgba(203, 215, 220, 0.5);

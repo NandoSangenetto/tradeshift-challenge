@@ -28,6 +28,7 @@ export const SideContainer = styled.aside`
   `}
 `;
 
-export const Result = styled.p`
-  color: red;
+export const Result = styled.h2`
+  text-align: center;
+  text-transform: capitalize;
 `;
