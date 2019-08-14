@@ -1,6 +1,5 @@
 const { resolve } = require('path');
 const { HotModuleReplacementPlugin } = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -72,22 +71,22 @@ const config = {
       template: resolve(__dirname, 'src/app/index.html'),
     }),
 
-    // Compressing all files to gzip
-    production
-      ? new CompressionPlugin({
-          algorithm: 'gzip',
-          test: /\.(js|css|html|svg)$/,
-        })
-      : null,
+    // // Compressing all files to gzip
+    // production
+    //   ? new CompressionPlugin({
+    //       algorithm: 'gzip',
+    //       test: /\.(js|css|html|svg)$/,
+    //     })
+    //   : null,
 
-    // Compressing all files to Brotli
-    production
-      ? new CompressionPlugin({
-          filename: '[path].br[query]',
-          algorithm: 'brotliCompress',
-          test: /\.(js|css|html|svg)$/,
-        })
-      : null,
+    // // Compressing all files to Brotli
+    // production
+    //   ? new CompressionPlugin({
+    //       filename: '[path].br[query]',
+    //       algorithm: 'brotliCompress',
+    //       test: /\.(js|css|html|svg)$/,
+    //     })
+    //   : null,
 
     // Enabling hot module replace on development environment
     !production ? new HotModuleReplacementPlugin() : null,

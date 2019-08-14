@@ -16,3 +16,8 @@ steps:
     args: ['run', 'build']
     id: 'npm-build'
     waitFor: ['npm-install']
+
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - app
+      - deploy
