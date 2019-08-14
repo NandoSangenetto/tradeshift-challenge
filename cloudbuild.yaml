@@ -1,0 +1,18 @@
+steps:
+  - name: node:10
+    entrypoint: npm
+    args: ['install']
+    id: 'npm-install'
+    waitFor: ['-']
+
+  - name: node:10
+    entrypoint: npm
+    args: ['test']
+    id: 'npm-test'
+    waitFor: ['npm-install']
+
+  - name: node:10
+    entrypoint: npm
+    args: ['run', 'build']
+    id: 'npm-build'
+    waitFor: ['npm-install']
