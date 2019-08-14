@@ -1,7 +1,13 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import media from './mediaQueries';
+import { createGlobalStyle } from 'styled-components';
 
-export const BaseStyle = createGlobalStyle`
+// We will add the content inside the createGlobalStyle just
+// to make easier to test it. The only easy way to test it is
+// creating a snapshot.
+// Resources:
+// https://spectrum.chat/styled-components/jest/testing-a-createglobalstyle~7ed712f0-e0f1-430b-85c9-bcc9aa23e077
+// https://github.com/styled-components/styled-components/blob/0aa3170c255a49cd41c3fbeb2b8051b5d132f229/src/test/rehydration.test.js
+// https://github.com/styled-components/styled-components/blob/0aa3170c255a49cd41c3fbeb2b8051b5d132f229/src/test/utils.js
+export const BaseStyleContent = `
   * {
     box-sizing: border-box;
   }
@@ -16,29 +22,6 @@ export const BaseStyle = createGlobalStyle`
   }
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 1024px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 12px;
-`;
+export const BaseStyle = createGlobalStyle`${BaseStyleContent}`;
 
-export const Title = styled.h1`
-  width: 100%;
-`;
-
-export const SideContainer = styled.aside`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 100%;
-  margin: 0;
-  padding: 12px;
-  ${media.desktop`
-    max-width: 318px;
-    padding: 12px;
-  `}
-`;
+export default { BaseStyle };

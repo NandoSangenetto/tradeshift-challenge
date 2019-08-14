@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import media from '../mediaQueries';
+import media from '../../helpers/mediaQueries';
 
 export const FormContainer = styled.form`
   display: flex;
@@ -58,5 +58,17 @@ export const SecondaryButton = styled.button`
   &:focus,
   &:active {
     border-color: #48adf8;
+  }
+`;
+
+export const ErrorList = styled.ul`
+  color: #bc0000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  li {
+    margin-left: 20px;
+    list-style: circle;
+    line-height: 1.3;
   }
 `;
