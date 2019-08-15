@@ -1,8 +1,6 @@
 const { resolve } = require('path');
-const { HotModuleReplacementPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 
 const { APP_PORT } = require('./src/config');
 
@@ -17,14 +15,14 @@ const config = {
 
   devtool: production ? '' : 'eval',
 
-  // All configs about the webpack-dev-server
+  // webpack-dev-server config
   devServer: {
-    historyApiFallback: true, // required for react-router works
+    historyApiFallback: true,
     publicPath: '/',
     contentBase: resolve(__dirname, './dist/client'),
-    open: true, // open browser after compiling
-    https: false, // turned off because we don't need it in dev
-    compress: true, // turn gzip on
+    open: true,
+    https: false,
+    compress: true,
     port: APP_PORT,
   },
 
@@ -41,6 +39,30 @@ const config = {
     publicPath: `/`,
     filename: '[hash].js',
     chunkFilename: '[chunkhash:8].js',
+  },
+
+  optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: 8,
+      minSize: 0,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(
+              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+            )[1];
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`;
+          },
+        },
+      },
+    },
   },
 
   module: {
@@ -70,29 +92,6 @@ const config = {
       filename: resolve(__dirname, 'dist/web/index.html'),
       template: resolve(__dirname, 'src/app/index.html'),
     }),
-
-    // // Compressing all files to gzip
-    // production
-    //   ? new CompressionPlugin({
-    //       algorithm: 'gzip',
-    //       test: /\.(js|css|html|svg)$/,
-    //     })
-    //   : null,
-
-    // // Compressing all files to Brotli
-    // production
-    //   ? new CompressionPlugin({
-    //       filename: '[path].br[query]',
-    //       algorithm: 'brotliCompress',
-    //       test: /\.(js|css|html|svg)$/,
-    //     })
-    //   : null,
-
-    // Enabling hot module replace on development environment
-    !production ? new HotModuleReplacementPlugin() : null,
-
-    // Copying all images to the image folder
-    new CopyPlugin([{ from: 'src/images/*', to: '[name].[ext]' }]),
   ].filter(Boolean),
 };
 
