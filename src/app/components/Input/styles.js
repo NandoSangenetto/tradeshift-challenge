@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Fieldset = styled.div`
+export const Fieldset = styled.fieldset`
   width: 100%;
   margin: 10px 0;
   display: flex;
@@ -35,7 +35,7 @@ export const InputField = styled.input`
 
 export const Label = styled.label`
   margin: 5px 0;
-  line-height: 10px;
+  line-height: 1.1;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;

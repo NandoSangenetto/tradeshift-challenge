@@ -19,7 +19,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run validate"
+      "pre-commit": "lint-staged"
     }
   },
   "author": "Nando Sangenetto",
@@ -29,43 +29,46 @@
   },
   "homepage": "https://github.com/nandosangenetto/tradeshift-challenge#readme",
   "dependencies": {
+    "cross-env": "^5.2.0",
+    "mime-types": "^2.1.24",
+    "webpack-cli": "^3.3.6"
+  },
+  "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@testing-library/jest-dom": "^4.0.0",
-    "@testing-library/react": "^9.1.0",
+    "@testing-library/react": "^9.1.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
-    "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.0",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.3",
     "jest": "^24.8.0",
+    "jest-styled-components": "^6.3.3",
     "jest-transform-stub": "^2.0.0",
     "lint-staged": "^9.2.1",
-    "mime-types": "^2.1.24",
+    "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6",
     "styled-reset": "^3.0.2",
-    "webpack-cli": "^3.3.6"
-  },
-  "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.8.0",
-    "webpack": "^4.39.1",
+    "webpack": "^4.39.2",
     "webpack-dev-server": "^3.8.0"
   }
 }
