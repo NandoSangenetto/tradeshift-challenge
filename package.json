@@ -30,7 +30,8 @@
   "homepage": "https://github.com/nandosangenetto/tradeshift-challenge#readme",
   "dependencies": {
     "cross-env": "^5.2.0",
-    "mime-types": "^2.1.24"
+    "mime-types": "^2.1.24",
+    "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
