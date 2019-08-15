@@ -31,6 +31,12 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "mime-types": "^2.1.24",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2",
+    "styled-normalize": "^8.0.6",
+    "styled-reset": "^3.0.2",
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
@@ -58,12 +64,6 @@
     "jest-transform-stub": "^2.0.0",
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "styled-components": "^4.3.2",
-    "styled-normalize": "^8.0.6",
-    "styled-reset": "^3.0.2",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",

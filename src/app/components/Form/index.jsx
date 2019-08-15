@@ -110,7 +110,7 @@ const Form = ({ onResult }) => {
         value={state.fields.c}
       />
       <SecondaryButton type="button" onClick={onClear}>
-        Clear
+        Clear fields
       </SecondaryButton>
       <PrimaryButton type="submit">Submit</PrimaryButton>
     </FormContainer>
